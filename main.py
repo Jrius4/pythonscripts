@@ -10,7 +10,13 @@ def extractData():
         df = pd.read_excel(input_path)
 
         # Create new columns 'Vendor Name' and 'Vendor Number' derived from 'Partner Name'
+        # Split the 'Contact Name' column by space or another separator
+        df['Contact Name List'] = df['Contact Name'].str.split(',')
+        df['Tel List'] = df['Tel No.'].str.split('.')
+        df['Email List'] = df['Email'].str.split(',')
         df[['Vendor Name', 'Vendor Number']] = df['Partner Name'].str.split('-', expand=True)
+        # df['Tel No.'] = df['Tel No.'].str.replace(r'\s+', ', ', regex=True)
+        # df['Email'] = df['Email'].str.replace(r'\s+', ', ', regex=True)
 
         # Display the updated DataFrame
         df.head()
