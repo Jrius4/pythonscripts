@@ -1,3 +1,5 @@
 env
 *.xlsx
 *.pdf
+.idea
+.codex
